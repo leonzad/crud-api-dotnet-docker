@@ -25,6 +25,8 @@ Exemplo de corpo para POST/PUT:
 }
 ```
 
+Validações: `cpf` deve conter exatamente 11 dígitos e `email` deve ser um e-mail válido. O `id` é gerado pelo banco — qualquer valor enviado no POST é ignorado.
+
 ## Como rodar
 
 ### Com Docker (recomendado)

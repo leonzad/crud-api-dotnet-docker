@@ -35,6 +35,8 @@ public class UsersController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<User>> PostUser(User user)
     {
+        // O Id é gerado pelo banco; um valor vindo do cliente dessincronizaria a sequence.
+        user.Id = 0;
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
         return CreatedAtAction(nameof(GetUser), new { Id = user.Id }, user);

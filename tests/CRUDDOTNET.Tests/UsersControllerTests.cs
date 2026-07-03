@@ -41,6 +41,19 @@ public class UsersControllerTests
     }
 
     [Fact]
+    public async Task PostUser_IgnoresClientSuppliedId()
+    {
+        var controller = NewController(out var context);
+
+        var result = await controller.PostUser(NewUser(id: 42));
+
+        var created = Assert.IsType<CreatedAtActionResult>(result.Result);
+        var user = Assert.IsType<User>(created.Value);
+        Assert.NotEqual(42, user.Id);
+        Assert.NotNull(await context.Users.FindAsync(user.Id));
+    }
+
+    [Fact]
     public async Task GetUser_ReturnsUser_WhenExists()
     {
         var controller = NewController(out var context);

@@ -18,16 +18,9 @@ builder.Services.AddDbContext<UserContext>(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-//}
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
+// Swagger fica sempre habilitado: a API é um exemplo e roda em Docker sem HTTPS.
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.MapControllers();
 

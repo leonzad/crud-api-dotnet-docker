@@ -11,6 +11,7 @@ namespace Models
         [Column("nome")]
         public required string Nome { get; set; }
         [Column("cpf")]
+        [RegularExpression(@"^\d{11}$", ErrorMessage = "CPF deve conter exatamente 11 dígitos numéricos.")]
         public required string Cpf { get; set; }
         [Column("email")]
         [EmailAddress]

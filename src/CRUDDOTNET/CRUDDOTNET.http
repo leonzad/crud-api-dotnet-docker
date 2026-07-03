@@ -1,6 +1,40 @@
-@CRUDDOTNET_HostAddress = http://localhost:5229
+@CRUDDOTNET_HostAddress = http://localhost:8080
 
-GET {{CRUDDOTNET_HostAddress}}/weatherforecast/
+GET {{CRUDDOTNET_HostAddress}}/api/users
 Accept: application/json
+
+###
+
+GET {{CRUDDOTNET_HostAddress}}/api/users/1
+Accept: application/json
+
+###
+
+POST {{CRUDDOTNET_HostAddress}}/api/users
+Content-Type: application/json
+
+{
+  "nome": "Fulano de Tal",
+  "cpf": "00000000000",
+  "email": "fulano@example.com",
+  "dataNasc": "1990-01-01T00:00:00Z"
+}
+
+###
+
+PUT {{CRUDDOTNET_HostAddress}}/api/users/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nome": "Fulano Atualizado",
+  "cpf": "00000000000",
+  "email": "fulano@example.com",
+  "dataNasc": "1990-01-01T00:00:00Z"
+}
+
+###
+
+DELETE {{CRUDDOTNET_HostAddress}}/api/users/1
 
 ###

@@ -9,11 +9,12 @@ namespace Models
         [Key]
         public int Id { get; set; }
         [Column("nome")]
-        public string Nome { get; set; }        
+        public required string Nome { get; set; }
         [Column("cpf")]
-        public string Cpf { get; set; }
+        public required string Cpf { get; set; }
         [Column("email")]
-        public string Email { get; set; }
+        [EmailAddress]
+        public required string Email { get; set; }
         [Column("dt_nasc")]
         public DateTime DataNasc { get; set; }
     }

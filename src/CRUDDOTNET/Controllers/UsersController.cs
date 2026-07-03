@@ -47,7 +47,12 @@ public class UsersController : ControllerBase
         {
             return BadRequest();
         }
-        _context.Entry(user).State = EntityState.Modified;
+        var existing = await _context.Users.FindAsync(Id);
+        if (existing == null)
+        {
+            return NotFound();
+        }
+        _context.Entry(existing).CurrentValues.SetValues(user);
         await _context.SaveChangesAsync();
         return NoContent();
     }
@@ -63,10 +68,5 @@ public class UsersController : ControllerBase
         _context.Users.Remove(user);
         await _context.SaveChangesAsync();
         return NoContent();
-    }
-    [HttpGet("test")]
-    public string Test()
-    {
-        return "Hello World!";
     }
 }
